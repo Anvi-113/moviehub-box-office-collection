@@ -9,8 +9,13 @@
     body { font-family: 'Arial', sans-serif; background: #0a0a0a; color: white; }
 
     /* HEADER */
-    header { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; padding: 15px 5%; background: #111; align-items: center; border-bottom: 2px solid #e50914; flex-wrap: wrap; }
-.logo { color: #e50914; font-size: 24px; font-weight: bold; }
+    header { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; padding: 15px 5%; background: #111; align-items: center; border-bottom: 2px solid #e50914; flex-wrap: wrap; gap: 15px; }
+   .logo { color: #e50914; font-size: 24px; font-weight: bold; }
+   .header-center { flex: 1; display: flex; justify-content: center; }
+   .search-box { display: flex; gap: 10px; width: 100%; max-width: 400px; }
+   .search-box input { flex: 1; padding: 8px 12px; border-radius: 5px; border: none; background: #222; color: white; }
+   .search-box button { padding: 8px 15px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+   .search-box button:hover { background: #b20710; }
     nav { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
     nav a { color: white; text-decoration: none; font-weight: 500; }
     nav a:hover { color: #e50914; }
@@ -20,62 +25,73 @@
     /* SECTIONS */
     section { padding: 60px 5%; min-height: 70vh; }
     h1 { text-align: center; font-size: 40px; margin-bottom: 30px; color: #e50914; }
+   .no-result { text-align: center; color: #aaa; font-size: 18px; margin-top: 20px; }
 
     /* HOME */
-.hero { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1200x600/111/444?text=MOVIEHUB') center/cover; text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 80vh; }
-.hero p { font-size: 18px; color: #ccc; margin: 20px 0; }
-.hero button { padding: 12px 30px; background: #e50914; color: white; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; width: 200px; margin: 20px auto; }
-.hero button:hover { background: #b20710; }
+   .hero { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1200x600/111/444?text=MOVIEHUB') center/cover; text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 80vh; }
+   .hero p { font-size: 18px; color: #ccc; margin: 20px 0; }
+   .hero button { padding: 12px 30px; background: #e50914; color: white; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; width: 200px; margin: 20px auto; }
+   .hero button:hover { background: #b20710; }
 
     /* COLLECTION */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 20px; }
-.card { background: #1a1a1a; border-radius: 10px; overflow: hidden; transition: transform 0.3s; }
-.card:hover { transform: scale(1.05); }
-.card img { width: 100%; height: 300px; object-fit: cover; }
-.card-info { padding: 15px; }
-.card-info h3 { margin: 5px 0; }
-.desc { color: #ccc; font-size: 13px; margin-top: 8px; min-height: 40px; }
-.rating { color: #ffd700; }
+   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 20px; }
+   .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; transition: transform 0.3s; }
+   .card:hover { transform: scale(1.05); }
+   .card img { width: 100%; height: 300px; object-fit: cover; }
+   .card-info { padding: 15px; }
+   .card-info h3 { margin: 5px 0; }
+   .desc { color: #ccc; font-size: 13px; margin-top: 8px; min-height: 40px; }
+   .rating { color: #ffd700; }
 
     /* ADMIN FORMS */
-.admin-form { margin-top: 40px; padding: 25px; background: #1a1a1a; border-radius: 10px; max-width: 500px; margin: 40px auto; border: 1px solid #333; }
-.admin-form input,.admin-form textarea { padding: 10px; margin: 8px 0; width: 100%; background: #333; border: none; color: white; border-radius: 5px; }
-.admin-form textarea { height: 80px; resize: vertical; }
-.admin-form button { padding: 10px 20px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 5px; font-weight: bold; }
-.admin-form button:hover { background: #b20710; }
-.btn-group { display: flex; gap: 10px; margin-top: 10px; }
-.editBtn { background: #007bff; flex: 1; padding: 8px; border: none; color: white; cursor: pointer; border-radius: 5px; }
-.deleteBtn { background: #dc3545; flex: 1; padding: 8px; border: none; color: white; cursor: pointer; border-radius: 5px; }
+   .admin-form { margin-top: 40px; padding: 25px; background: #1a1a1a; border-radius: 10px; max-width: 500px; margin: 40px auto; border: 1px solid #333; }
+   .admin-form input,.admin-form textarea { padding: 10px; margin: 8px 0; width: 100%; background: #333; border: none; color: white; border-radius: 5px; }
+   .admin-form textarea { height: 80px; resize: vertical; }
+   .admin-form button { padding: 10px 20px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 5px; font-weight: bold; }
+   .admin-form button:hover { background: #b20710; }
+   .btn-group { display: flex; gap: 10px; margin-top: 10px; }
+   .editBtn { background: #007bff; flex: 1; padding: 8px; border: none; color: white; cursor: pointer; border-radius: 5px; }
+   .deleteBtn { background: #dc3545; flex: 1; padding: 8px; border: none; color: white; cursor: pointer; border-radius: 5px; }
 
-    /* REVIEWS - NEW IMAGE STYLE */
+    /* REVIEWS */
     #reviews { background: #111; }
-.review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-.review-card { background: #1a1a1a; padding: 0; border-radius: 10px; border-left: 4px solid #e50914; overflow: hidden; display: flex; flex-direction: column; }
-.review-card img { width: 100%; height: 200px; object-fit: cover; }
-.review-content { padding: 15px; }
-.review-content h4 { margin-bottom: 8px; color: #e50914; }
+   .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+   .review-card { background: #1a1a1a; padding: 0; border-radius: 10px; border-left: 4px solid #e50914; overflow: hidden; display: flex; flex-direction: column; }
+   .review-card img { width: 100%; height: 200px; object-fit: cover; }
+   .review-content { padding: 15px; }
+   .review-content h4 { margin-bottom: 8px; color: #e50914; }
 
     /* NEWS */
-.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.news-card { background: #1a1a1a; padding: 15px; border-radius: 10px; }
-.news-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
+   .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+   .news-card { background: #1a1a1a; padding: 15px; border-radius: 10px; }
+   .news-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
 
     /* FOOTER */
     footer { background: #111; padding: 40px 5%; border-top: 2px solid #e50914; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; max-width: 1200px; margin: 0 auto 30px auto; }
-.footer-grid h3 { color: #e50914; margin-bottom: 15px; }
-.footer-grid h4 { color: white; margin-bottom: 15px; }
-.footer-grid p,.footer-grid a { color: #aaa; text-decoration: none; margin: 8px 0; display: block; }
-.footer-grid a:hover { color: #e50914; }
-.social-icons { display: flex; gap: 15px; }
-.social-icons a { font-size: 20px; }
+   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; max-width: 1200px; margin: 0 auto 30px auto; }
+   .footer-grid h3 { color: #e50914; margin-bottom: 15px; }
+   .footer-grid h4 { color: white; margin-bottom: 15px; }
+   .footer-grid p,.footer-grid a { color: #aaa; text-decoration: none; margin: 8px 0; display: block; }
+   .footer-grid a:hover { color: #e50914; }
+   .social-icons { display: flex; gap: 15px; }
+   .social-icons a { font-size: 20px; }
+
+    @media(max-width: 900px) {.header-center { order: 3; width: 100%; } }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER WITH SEARCH -->
   <header>
-    <h2 class="logo">ðŸŽ¬ MovieHub</h2>
+    <h2 class="logo">🎬 MovieHub</h2>
+
+    <div class="header-center">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search movies, reviews, news...">
+        <button onclick="searchAll()">SEARCH</button>
+      </div>
+    </div>
+
     <nav>
       <a href="#home">HOME</a>
       <a href="#collection">COLLECTION</a>
@@ -96,6 +112,7 @@
   <section id="collection">
     <h1>MY MOVIE COLLECTION</h1>
     <div id="movieGrid" class="grid"></div>
+    <p id="movieNoResult" class="no-result" style="display:none;">No movies found 😔</p>
 
     <div id="movieForm" class="admin-form" style="display:none;">
       <h3 id="movieFormTitle">Add New Movie</h3>
@@ -110,10 +127,11 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION - IMAGE ADDED -->
+  <!-- REVIEWS SECTION -->
   <section id="reviews">
     <h1>LATEST REVIEWS</h1>
     <div id="reviewGrid" class="review-grid"></div>
+    <p id="reviewNoResult" class="no-result" style="display:none;">No reviews found 😔</p>
 
     <div id="reviewForm" class="admin-form" style="display:none;">
       <h3 id="reviewFormTitle">Add New Review</h3>
@@ -131,6 +149,7 @@
   <section id="news">
     <h1>MOVIE NEWS</h1>
     <div id="newsGrid" class="news-grid"></div>
+    <p id="newsNoResult" class="no-result" style="display:none;">No news found 😔</p>
 
     <div id="newsForm" class="admin-form" style="display:none;">
       <h3 id="newsFormTitle">Add New News</h3>
@@ -147,7 +166,7 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <h3>ðŸŽ¬ MovieHub</h3>
+        <h3>🎬 MovieHub</h3>
         <p>Track your favorite movies, write reviews, and stay updated with latest movie news. Your personal movie database.</p>
       </div>
       <div>
@@ -159,28 +178,28 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <p>ðŸ“§ moviehub@gmail.com</p>
-        <p>ðŸ“ Telangana, India</p>
-        <p>ðŸ“ž +91 98765 43210</p>
+        <p>📧 moviehub@gmail.com</p>
+        <p>📍 Telangana, India</p>
+        <p>📞 +91 98765 43210</p>
       </div>
       <div>
         <h4>Follow Us</h4>
         <div class="social-icons">
-          <a href="#">ðŸ“˜</a>
-          <a href="#">ðŸ“·</a>
-          <a href="#">ðŸ¦</a>
-          <a href="#">â–¶ï¸</a>
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+          <a href="#">▶️</a>
         </div>
       </div>
     </div>
     <hr style="border: none; border-top: 1px solid #333; margin: 20px 0;">
-    <p style="text-align: center; color: #777;">Â© 2026 MovieHub. All Rights Reserved. Built with â¤ï¸</p>
+    <p style="text-align: center; color: #777;">© 2026 MovieHub. All Rights Reserved. Built with ❤️</p>
   </footer>
 
   <script>
     let isAdmin = false;
     let movies = JSON.parse(localStorage.getItem("movies")) || [{name: "RRR", year: "2022", rating: "7.8", img: "https://image.tmdb.org/t/p/w500/4Q0owYuRg0aQLKOX6i09YfcgknN.jpg", desc: "Action drama about two freedom fighters"}];
-    let reviews = JSON.parse(localStorage.getItem("reviews")) || [{movie: "RRR", rating: "9/10", text: "Mass action + emotions. Rajamouli magic! Must watch.", img: "https://image.tmdb.org/t/p/w500/4Q0owYuRg0aQLKOX6i09YfcgknN.jpg"}, {movie: "KGF 2", rating: "8.5/10", text: "Yash acting ðŸ”¥ BGM is next level. Blockbuster.", img: "https://via.placeholder.com/320x200/222/fff?text=KGF2"}];
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [{movie: "RRR", rating: "9/10", text: "Mass action + emotions. Rajamouli magic! Must watch.", img: "https://image.tmdb.org/t/p/w500/4Q0owYuRg0aQLKOX6i09YfcgknN.jpg"}];
     let news = JSON.parse(localStorage.getItem("news")) || [{title: "Pushpa 2 Release Date Announced", img: "https://via.placeholder.com/300x180/222/fff?text=Pushpa2", text: "Allu Arjun starrer coming on Dec 5, 2024. Huge expectations."}];
 
     function saveAll() {
@@ -191,7 +210,7 @@
 
     function toggleAdmin() {
       let pass = prompt("Enter Admin Password:");
-      if(pass === "Anvi@12345") {
+      if(pass === "1234") {
         isAdmin =!isAdmin;
         document.getElementById("adminBtn").innerText = isAdmin? "LOGOUT" : "ADMIN";
         document.getElementById("movieForm").style.display = isAdmin? "block" : "none";
@@ -201,43 +220,71 @@
       } else { alert("Wrong Password! Default: 1234"); }
     }
 
-    function loadAll() { loadMovies(); loadReviews(); loadNews(); }
+    function loadAll() { loadMovies(movies); loadReviews(reviews); loadNews(news); }
+
+    // SEARCH FUNCTION
+    function searchAll() {
+      let query = document.getElementById("searchInput").value.toLowerCase().trim();
+      if(query === "") { loadAll(); return; }
+
+      let filteredMovies = movies.filter(m => m.name.toLowerCase().includes(query) || m.desc.toLowerCase().includes(query));
+      let filteredReviews = reviews.filter(r => r.movie.toLowerCase().includes(query) || r.text.toLowerCase().includes(query));
+      let filteredNews = news.filter(n => n.title.toLowerCase().includes(query) || n.text.toLowerCase().includes(query));
+
+      loadMovies(filteredMovies);
+      loadReviews(filteredReviews);
+      loadNews(filteredNews);
+
+      // Scroll to collection
+      document.getElementById('collection').scrollIntoView();
+    }
+
+    // Enter key press cheste search avvali
+    document.getElementById("searchInput").addEventListener("keypress", function(e) {
+      if(e.key === "Enter") { searchAll(); }
+    });
 
     // MOVIES CRUD
-    function loadMovies() {
+    function loadMovies(data) {
       let grid = document.getElementById("movieGrid"); grid.innerHTML = "";
-      movies.forEach((m, i) => {
-        grid.innerHTML += `<div class="card"><img src="${m.img}" onerror="this.src='https://via.placeholder.com/220x300/222/fff?text=No+Image'"><div class="card-info"><h3>${m.name}</h3><p>${m.year} | <span class="rating">â­ ${m.rating}</span></p><p class="desc">${m.desc || ''}</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editMovie(${i})">EDIT</button><button class="deleteBtn" onclick="deleteMovie(${i})">DELETE</button></div>` : ""}</div></div>`;
+      document.getElementById("movieNoResult").style.display = data.length === 0? "block" : "none";
+      data.forEach((m, i) => {
+        let originalIndex = movies.indexOf(m);
+        grid.innerHTML += `<div class="card"><img src="${m.img}" onerror="this.src='https://via.placeholder.com/220x300/222/fff?text=No+Image'"><div class="card-info"><h3>${m.name}</h3><p>${m.year} | <span class="rating">⭐ ${m.rating}</span></p><p class="desc">${m.desc || ''}</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editMovie(${originalIndex})">EDIT</button><button class="deleteBtn" onclick="deleteMovie(${originalIndex})">DELETE</button></div>` : ""}</div></div>`;
       });
     }
     function editMovie(i) { let m=movies[i]; movieEditIndex.value=i; movieName.value=m.name; movieYear.value=m.year; movieRating.value=m.rating; movieDesc.value=m.desc; movieFormTitle.innerText="Edit Movie"; movieSaveBtn.innerText="UPDATE MOVIE"; movieCancelBtn.style.display="block"; }
     function cancelMovieEdit() { movieEditIndex.value=-1; document.getElementById("movieForm").querySelectorAll("input,textarea").forEach(e=>e.value=""); movieFormTitle.innerText="Add New Movie"; movieSaveBtn.innerText="ADD MOVIE"; movieCancelBtn.style.display="none"; }
-    function saveMovie() { let i=movieEditIndex.value; if(!movieName.value||!movieYear.value||!movieRating.value){alert("Fill all required fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||movies[i]?.img; let obj={name:movieName.value,year:movieYear.value,rating:movieRating.value,img,desc:movieDesc.value}; if(i==-1){movies.push(obj);alert("Movie Added!")}else{if(!movieImage.files[0])obj.img=movies[i].img;movies[i]=obj;alert("Movie Updated!")} saveAll(); cancelMovieEdit(); loadMovies();}; if(movieImage.files[0]){reader.readAsDataURL(movieImage.files[0])}else{reader.onload()} }
-    function deleteMovie(i){if(confirm("Delete this movie?")){movies.splice(i,1);saveAll();loadMovies()}}
+    function saveMovie() { let i=movieEditIndex.value; if(!movieName.value||!movieYear.value||!movieRating.value){alert("Fill all required fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||movies[i]?.img; let obj={name:movieName.value,year:movieYear.value,rating:movieRating.value,img,desc:movieDesc.value}; if(i==-1){movies.push(obj);alert("Movie Added!")}else{if(!movieImage.files[0])obj.img=movies[i].img;movies[i]=obj;alert("Movie Updated!")} saveAll(); cancelMovieEdit(); loadAll();}; if(movieImage.files[0]){reader.readAsDataURL(movieImage.files[0])}else{reader.onload()} }
+    function deleteMovie(i){if(confirm("Delete this movie?")){movies.splice(i,1);saveAll();loadAll()}}
 
-    // REVIEWS CRUD - WITH IMAGE
-    function loadReviews() {
+    // REVIEWS CRUD
+    function loadReviews(data) {
       let grid = document.getElementById("reviewGrid"); grid.innerHTML = "";
-      reviews.forEach((r, i) => {
-        grid.innerHTML += `<div class="review-card"><img src="${r.img}" onerror="this.src='https://via.placeholder.com/320x200/222/fff?text=No+Poster'"><div class="review-content"><h4>${r.movie} - â­ ${r.rating}</h4><p>"${r.text}"</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editReview(${i})">EDIT</button><button class="deleteBtn" onclick="deleteReview(${i})">DELETE</button></div>` : ""}</div></div>`;
+      document.getElementById("reviewNoResult").style.display = data.length === 0? "block" : "none";
+      data.forEach((r, i) => {
+        let originalIndex = reviews.indexOf(r);
+        grid.innerHTML += `<div class="review-card"><img src="${r.img}" onerror="this.src='https://via.placeholder.com/320x200/222/fff?text=No+Poster'"><div class="review-content"><h4>${r.movie} - ⭐ ${r.rating}</h4><p>"${r.text}"</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editReview(${originalIndex})">EDIT</button><button class="deleteBtn" onclick="deleteReview(${originalIndex})">DELETE</button></div>` : ""}</div></div>`;
       });
     }
     function editReview(i){let r=reviews[i]; reviewEditIndex.value=i; reviewMovieName.value=r.movie; reviewRating.value=r.rating; reviewText.value=r.text; reviewFormTitle.innerText="Edit Review"; reviewSaveBtn.innerText="UPDATE REVIEW"; reviewCancelBtn.style.display="block";}
     function cancelReviewEdit(){reviewEditIndex.value=-1; document.getElementById("reviewForm").querySelectorAll("input,textarea").forEach(e=>e.value=""); reviewFormTitle.innerText="Add New Review"; reviewSaveBtn.innerText="ADD REVIEW"; reviewCancelBtn.style.display="none";}
-    function saveReview(){let i=reviewEditIndex.value; if(!reviewMovieName.value||!reviewText.value){alert("Fill all fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||reviews[i]?.img; let obj={movie:reviewMovieName.value, rating:reviewRating.value, text:reviewText.value, img}; if(i==-1){reviews.push(obj);alert("Review Added!")}else{if(!reviewImage.files[0])obj.img=reviews[i].img;reviews[i]=obj;alert("Review Updated!")} saveAll(); cancelReviewEdit(); loadReviews();}; if(reviewImage.files[0]){reader.readAsDataURL(reviewImage.files[0])}else{reader.onload()} }
-    function deleteReview(i){if(confirm("Delete this review?")){reviews.splice(i,1);saveAll();loadReviews()}}
+    function saveReview(){let i=reviewEditIndex.value; if(!reviewMovieName.value||!reviewText.value){alert("Fill all fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||reviews[i]?.img; let obj={movie:reviewMovieName.value, rating:reviewRating.value, text:reviewText.value, img}; if(i==-1){reviews.push(obj);alert("Review Added!")}else{if(!reviewImage.files[0])obj.img=reviews[i].img;reviews[i]=obj;alert("Review Updated!")} saveAll(); cancelReviewEdit(); loadAll();}; if(reviewImage.files[0]){reader.readAsDataURL(reviewImage.files[0])}else{reader.onload()} }
+    function deleteReview(i){if(confirm("Delete this review?")){reviews.splice(i,1);saveAll();loadAll()}}
 
     // NEWS CRUD
-    function loadNews() {
+    function loadNews(data) {
       let grid = document.getElementById("newsGrid"); grid.innerHTML = "";
-      news.forEach((n, i) => {
-        grid.innerHTML += `<div class="news-card"><img src="${n.img}" onerror="this.src='https://via.placeholder.com/300x180/222/fff?text=News'"><h3>${n.title}</h3><p>${n.text}</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editNews(${i})">EDIT</button><button class="deleteBtn" onclick="deleteNews(${i})">DELETE</button></div>` : ""}</div>`;
+      document.getElementById("newsNoResult").style.display = data.length === 0? "block" : "none";
+      data.forEach((n, i) => {
+        let originalIndex = news.indexOf(n);
+        grid.innerHTML += `<div class="news-card"><img src="${n.img}" onerror="this.src='https://via.placeholder.com/300x180/222/fff?text=News'"><h3>${n.title}</h3><p>${n.text}</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editNews(${originalIndex})">EDIT</button><button class="deleteBtn" onclick="deleteNews(${originalIndex})">DELETE</button></div>` : ""}</div>`;
       });
     }
     function editNews(i){let n=news[i]; newsEditIndex.value=i; newsTitle.value=n.title; newsText.value=n.text; newsFormTitle.innerText="Edit News"; newsSaveBtn.innerText="UPDATE NEWS"; newsCancelBtn.style.display="block";}
     function cancelNewsEdit(){newsEditIndex.value=-1; document.getElementById("newsForm").querySelectorAll("input,textarea").forEach(e=>e.value=""); newsFormTitle.innerText="Add New News"; newsSaveBtn.innerText="ADD NEWS"; newsCancelBtn.style.display="none";}
-    function saveNews(){let i=newsEditIndex.value; if(!newsTitle.value||!newsText.value){alert("Fill all fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||news[i]?.img; let obj={title:newsTitle.value,img,text:newsText.value}; if(i==-1){news.push(obj);alert("News Added!")}else{if(!newsImage.files[0])obj.img=news[i].img;news[i]=obj;alert("News Updated!")} saveAll(); cancelNewsEdit(); loadNews();}; if(newsImage.files[0]){reader.readAsDataURL(newsImage.files[0])}else{reader.onload()} }
-    function deleteNews(i){if(confirm("Delete this news?")){news.splice(i,1);saveAll();loadNews()}}
+    function saveNews(){let i=newsEditIndex.value; if(!newsTitle.value||!newsText.value){alert("Fill all fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||news[i]?.img; let obj={title:newsTitle.value,img,text:newsText.value}; if(i==-1){news.push(obj);alert("News Added!")}else{if(!newsImage.files[0])obj.img=news[i].img;news[i]=obj;alert("News Updated!")} saveAll(); cancelNewsEdit(); loadAll();}; if(newsImage.files[0]){reader.readAsDataURL(newsImage.files[0])}else{reader.onload()} }
+    function deleteNews(i){if(confirm("Delete this news?")){news.splice(i,1);saveAll();loadAll()}}
 
     loadAll();
   </script>
