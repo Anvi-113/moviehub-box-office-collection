@@ -210,7 +210,7 @@
 
     function toggleAdmin() {
       let pass = prompt("Enter Admin Password:");
-      if(pass === "1234") {
+      if(pass === "Anvi@12345") {
         isAdmin =!isAdmin;
         document.getElementById("adminBtn").innerText = isAdmin? "LOGOUT" : "ADMIN";
         document.getElementById("movieForm").style.display = isAdmin? "block" : "none";
