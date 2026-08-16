@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieHub - Your Movie Collection</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Arial', sans-serif; background: #0a0a0a; color: white; }
+
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; padding: 15px 5%; background: #111; align-items: center; border-bottom: 2px solid #e50914; flex-wrap: wrap; }
+ .logo { color: #e50914; font-size: 24px; font-weight: bold; }
+    nav { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: #e50914; }
+    nav button { padding: 8px 15px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    nav button:hover { background: #b20710; }
+
+    /* SECTIONS */
+    section { padding: 60px 5%; min-height: 70vh; }
+    h1 { text-align: center; font-size: 40px; margin-bottom: 30px; color: #e50914; }
+
+    /* HOME */
+ .hero { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1200x600/111/444?text=MOVIEHUB') center/cover; text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 80vh; }
+ .hero p { font-size: 18px; color: #ccc; margin: 20px 0; }
+ .hero button { padding: 12px 30px; background: #e50914; color: white; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; width: 200px; margin: 20px auto; }
+ .hero button:hover { background: #b20710; }
+
+    /* COLLECTION */
+ .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 20px; }
+ .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; transition: transform 0.3s; }
+ .card:hover { transform: scale(1.05); }
+ .card img { width: 100%; height: 300px; object-fit: cover; }
+ .card-info { padding: 15px; }
+ .card-info h3 { margin: 5px 0; }
+ .desc { color: #ccc; font-size: 13px; margin-top: 8px; min-height: 40px; }
+ .rating { color: #ffd700; }
+
+    /* ADMIN FORMS */
+ .admin-form { margin-top: 40px; padding: 25px; background: #1a1a1a; border-radius: 10px; max-width: 500px; margin: 40px auto; border: 1px solid #333; }
+ .admin-form input,.admin-form textarea { padding: 10px; margin: 8px 0; width: 100%; background: #333; border: none; color: white; border-radius: 5px; }
+ .admin-form textarea { height: 80px; resize: vertical; }
+ .admin-form button { padding: 10px 20px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 5px; font-weight: bold; }
+ .admin-form button:hover { background: #b20710; }
+ .btn-group { display: flex; gap: 10px; margin-top: 10px; }
+ .editBtn { background: #007bff; flex: 1; padding: 8px; border: none; color: white; cursor: pointer; border-radius: 5px; }
+ .deleteBtn { background: #dc3545; flex: 1; padding: 8px; border: none; color: white; cursor: pointer; border-radius: 5px; }
+
+    /* REVIEWS */
+    #reviews { background: #111; }
+ .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+ .review-card { background: #1a1a1a; padding: 20px; border-radius: 10px; border-left: 4px solid #e50914; }
+
+    /* NEWS */
+ .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+ .news-card { background: #1a1a1a; padding: 15px; border-radius: 10px; }
+ .news-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
+
+    /* FOOTER */
+    footer { background: #111; padding: 40px 5%; border-top: 2px solid #e50914; }
+ .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; max-width: 1200px; margin: 0 auto 30px auto; }
+ .footer-grid h3 { color: #e50914; margin-bottom: 15px; }
+ .footer-grid h4 { color: white; margin-bottom: 15px; }
+ .footer-grid p,.footer-grid a { color: #aaa; text-decoration: none; margin: 8px 0; display: block; }
+ .footer-grid a:hover { color: #e50914; }
+ .social-icons { display: flex; gap: 15px; }
+ .social-icons a { font-size: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h2 class="logo">🎬 MovieHub</h2>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#collection">COLLECTION</a>
+      <a href="#reviews">REVIEWS</a>
+      <a href="#news">NEWS</a>
+      <button onclick="toggleAdmin()" id="adminBtn">ADMIN</button>
+    </nav>
+  </header>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="hero">
+    <h1>Welcome to MovieHub</h1>
+    <p>Track your favorite movies, write reviews, and stay updated with latest movie news</p>
+    <button onclick="document.getElementById('collection').scrollIntoView()">VIEW COLLECTION</button>
+  </section>
+
+  <!-- COLLECTION SECTION -->
+  <section id="collection">
+    <h1>MY MOVIE COLLECTION</h1>
+    <div id="movieGrid" class="grid"></div>
+
+    <div id="movieForm" class="admin-form" style="display:none;">
+      <h3 id="movieFormTitle">Add New Movie</h3>
+      <input type="hidden" id="movieEditIndex" value="-1">
+      <input type="text" id="movieName" placeholder="Movie Name" required>
+      <input type="number" id="movieYear" placeholder="Year" required>
+      <input type="number" step="0.1" id="movieRating" placeholder="Rating 8.5" required>
+      <input type="file" id="movieImage" accept="image/*">
+      <textarea id="movieDesc" placeholder="Collection details... Story, Actors, Why to watch"></textarea>
+      <button onclick="saveMovie()" id="movieSaveBtn">ADD MOVIE</button>
+      <button onclick="cancelMovieEdit()" style="background:#555; display:none;" id="movieCancelBtn">CANCEL</button>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section id="reviews">
+    <h1>LATEST REVIEWS</h1>
+    <div id="reviewGrid" class="review-grid"></div>
+
+    <div id="reviewForm" class="admin-form" style="display:none;">
+      <h3 id="reviewFormTitle">Add New Review</h3>
+      <input type="hidden" id="reviewEditIndex" value="-1">
+      <input type="text" id="reviewMovieName" placeholder="Movie Name" required>
+      <input type="text" id="reviewRating" placeholder="Rating 9/10" required>
+      <textarea id="reviewText" placeholder="Write your review..." required></textarea>
+      <button onclick="saveReview()">ADD REVIEW</button>
+      <button onclick="cancelReviewEdit()" style="background:#555; display:none;" id="reviewCancelBtn">CANCEL</button>
+    </div>
+  </section>
+
+  <!-- NEWS SECTION -->
+  <section id="news">
+    <h1>MOVIE NEWS</h1>
+    <div id="newsGrid" class="news-grid"></div>
+
+    <div id="newsForm" class="admin-form" style="display:none;">
+      <h3 id="newsFormTitle">Add New News</h3>
+      <input type="hidden" id="newsEditIndex" value="-1">
+      <input type="text" id="newsTitle" placeholder="News Title" required>
+      <input type="file" id="newsImage" accept="image/*">
+      <textarea id="newsText" placeholder="News Description..." required></textarea>
+      <button onclick="saveNews()">ADD NEWS</button>
+      <button onclick="cancelNewsEdit()" style="background:#555; display:none;" id="newsCancelBtn">CANCEL</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+
+      <div>
+        <h3>🎬 MovieHub</h3>
+        <p>Track your favorite movies, write reviews, and stay updated with latest movie news. Your personal movie database.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#collection">Collection</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#news">News</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>📧 moviehub@gmail.com</p>
+        <p>📍 Telangana, India</p>
+      </div>
+
+      <div>
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+          <a href="#">▶️</a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr style="border: none; border-top: 1px solid #333; margin: 20px 0;">
+    <p style="text-align: center; color: #777;">© 2026 MovieHub. All Rights Reserved. Built with ❤️</p>
+  </footer>
+
+  <script>
+    let isAdmin = false;
+    let movies = JSON.parse(localStorage.getItem("movies")) || [{name: "RRR", year: "2022", rating: "7.8", img: "https://image.tmdb.org/t/p/w500/4Q0owYuRg0aQLKOX6i09YfcgknN.jpg", desc: "Action drama about two freedom fighters"}];
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [{movie: "RRR", rating: "9/10", text: "Mass action + emotions. Rajamouli magic! Must watch."}, {movie: "KGF 2", rating: "8.5/10", text: "Yash acting 🔥 BGM is next level. Blockbuster."}];
+    let news = JSON.parse(localStorage.getItem("news")) || [{title: "Pushpa 2 Release Date Announced", img: "https://via.placeholder.com/300x180/222/fff?text=Pushpa2", text: "Allu Arjun starrer coming on Dec 5, 2024. Huge expectations."}];
+
+    function saveAll() {
+      localStorage.setItem("movies", JSON.stringify(movies));
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+      localStorage.setItem("news", JSON.stringify(news));
+    }
+
+    function toggleAdmin() {
+      let pass = prompt("Enter Admin Password:");
+      if(pass === "Anjali@123") {
+        isAdmin =!isAdmin;
+        document.getElementById("adminBtn").innerText = isAdmin? "LOGOUT" : "ADMIN";
+        document.getElementById("movieForm").style.display = isAdmin? "block" : "none";
+        document.getElementById("reviewForm").style.display = isAdmin? "block" : "none";
+        document.getElementById("newsForm").style.display = isAdmin? "block" : "none";
+        loadAll();
+      } else { alert("Wrong Password! Default: 1234"); }
+    }
+
+    function loadAll() { loadMovies(); loadReviews(); loadNews(); }
+
+    // MOVIES CRUD
+    function loadMovies() {
+      let grid = document.getElementById("movieGrid"); grid.innerHTML = "";
+      movies.forEach((m, i) => {
+        grid.innerHTML += `<div class="card"><img src="${m.img}" onerror="this.src='https://via.placeholder.com/220x300/222/fff?text=No+Image'"><div class="card-info"><h3>${m.name}</h3><p>${m.year} | <span class="rating">⭐ ${m.rating}</span></p><p class="desc">${m.desc || ''}</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editMovie(${i})">EDIT</button><button class="deleteBtn" onclick="deleteMovie(${i})">DELETE</button></div>` : ""}</div></div>`;
+      });
+    }
+    function editMovie(i) { let m=movies[i]; movieEditIndex.value=i; movieName.value=m.name; movieYear.value=m.year; movieRating.value=m.rating; movieDesc.value=m.desc; movieFormTitle.innerText="Edit Movie"; movieSaveBtn.innerText="UPDATE MOVIE"; movieCancelBtn.style.display="block"; }
+    function cancelMovieEdit() { movieEditIndex.value=-1; document.getElementById("movieForm").querySelectorAll("input,textarea").forEach(e=>e.value=""); movieFormTitle.innerText="Add New Movie"; movieSaveBtn.innerText="ADD MOVIE"; movieCancelBtn.style.display="none"; }
+    function saveMovie() { let i=movieEditIndex.value; if(!movieName.value||!movieYear.value||!movieRating.value){alert("Fill all required fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||movies[i]?.img; let obj={name:movieName.value,year:movieYear.value,rating:movieRating.value,img,desc:movieDesc.value}; if(i==-1){movies.push(obj);alert("Movie Added!")}else{if(!movieImage.files[0])obj.img=movies[i].img;movies[i]=obj;alert("Movie Updated!")} saveAll(); cancelMovieEdit(); loadMovies();}; if(movieImage.files[0]){reader.readAsDataURL(movieImage.files[0])}else{reader.onload()} }
+    function deleteMovie(i){if(confirm("Delete this movie?")){movies.splice(i,1);saveAll();loadMovies()}}
+
+    // REVIEWS CRUD
+    function loadReviews() {
+      let grid = document.getElementById("reviewGrid"); grid.innerHTML = "";
+      reviews.forEach((r, i) => {
+        grid.innerHTML += `<div class="review-card"><h4>${r.movie} - ⭐ ${r.rating}</h4><p>"${r.text}"</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editReview(${i})">EDIT</button><button class="deleteBtn" onclick="deleteReview(${i})">DELETE</button></div>` : ""}</div>`;
+      });
+    }
+    function editReview(i){let r=reviews[i]; reviewEditIndex.value=i; reviewMovieName.value=r.movie; reviewRating.value=r.rating; reviewText.value=r.text; reviewFormTitle.innerText="Edit Review"; reviewSaveBtn.innerText="UPDATE REVIEW"; reviewCancelBtn.style.display="block";}
+    function cancelReviewEdit(){reviewEditIndex.value=-1; document.getElementById("reviewForm").querySelectorAll("input,textarea").forEach(e=>e.value=""); reviewFormTitle.innerText="Add New Review"; reviewCancelBtn.style.display="none";}
+    function saveReview(){let i=reviewEditIndex.value; if(!reviewMovieName.value||!reviewText.value){alert("Fill all fields");return;} let obj={movie:reviewMovieName.value, rating:reviewRating.value, text:reviewText.value}; if(i==-1){reviews.push(obj);alert("Review Added!")}else{reviews[i]=obj;alert("Review Updated!")} saveAll(); cancelReviewEdit(); loadReviews();}
+    function deleteReview(i){if(confirm("Delete this review?")){reviews.splice(i,1);saveAll();loadReviews()}}
+
+    // NEWS CRUD
+    function loadNews() {
+      let grid = document.getElementById("newsGrid"); grid.innerHTML = "";
+      news.forEach((n, i) => {
+        grid.innerHTML += `<div class="news-card"><img src="${n.img}" onerror="this.src='https://via.placeholder.com/300x180/222/fff?text=News'"><h3>${n.title}</h3><p>${n.text}</p>${isAdmin? `<div class="btn-group"><button class="editBtn" onclick="editNews(${i})">EDIT</button><button class="deleteBtn" onclick="deleteNews(${i})">DELETE</button></div>` : ""}</div>`;
+      });
+    }
+    function editNews(i){let n=news[i]; newsEditIndex.value=i; newsTitle.value=n.title; newsText.value=n.text; newsFormTitle.innerText="Edit News"; newsSaveBtn.innerText="UPDATE NEWS"; newsCancelBtn.style.display="block";}
+    function cancelNewsEdit(){newsEditIndex.value=-1; document.getElementById("newsForm").querySelectorAll("input,textarea").forEach(e=>e.value=""); newsFormTitle.innerText="Add New News"; newsCancelBtn.style.display="none";}
+    function saveNews(){let i=newsEditIndex.value; if(!newsTitle.value||!newsText.value){alert("Fill all fields");return;} let reader=new FileReader(); reader.onload=function(e){let img=e.target.result||news[i]?.img; let obj={title:newsTitle.value,img,text:newsText.value}; if(i==-1){news.push(obj);alert("News Added!")}else{if(!newsImage.files[0])obj.img=news[i].img;news[i]=obj;alert("News Updated!")} saveAll(); cancelNewsEdit(); loadNews();}; if(newsImage.files[0]){reader.readAsDataURL(newsImage.files[0])}else{reader.onload()} }
+    function deleteNews(i){if(confirm("Delete this news?")){news.splice(i,1);saveAll();loadNews()}}
+
+    loadAll();
+  </script>
+</body>
+</html>
